@@ -1,0 +1,31 @@
+import React from 'react';
+
+function CheckSuccess() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 18 18"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M2 5.73333C2 4.42654 2 3.77315 2.25432 3.27402C2.47802 2.83498 2.83498 2.47802 3.27402 2.25432C3.77315 2 4.42654 2 5.73333 2H12.2667C13.5735 2 14.2269 2 14.726 2.25432C15.165 2.47802 15.522 2.83498 15.7457 3.27402C16 3.77315 16 4.42654 16 5.73333V12.2667C16 13.5735 16 14.2269 15.7457 14.726C15.522 15.165 15.165 15.522 14.726 15.7457C14.2269 16 13.5735 16 12.2667 16H5.73333C4.42654 16 3.77315 16 3.27402 15.7457C2.83498 15.522 2.47802 15.165 2.25432 14.726C2 14.2269 2 13.5735 2 12.2667V5.73333Z"
+        fill="#83B500"
+        stroke="#83B500"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M5.5 8.99996L7.83333 11.3333L12.5 6.66663"
+        stroke="white"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export { CheckSuccess };
