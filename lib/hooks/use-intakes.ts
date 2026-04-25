@@ -18,7 +18,11 @@ export function useIntakes() {
 
 /**
  * Fetches a single intake detail by id.
+ * SWR key includes source to prevent cross-brand cache bleed when
+ * doctor switches active brand mid-session.
  */
 export function useIntake(id: number | string) {
-  return useSWR<IntakeDetail>(`/provider/intakes/${id}`);
+  const { source } = useSource();
+  const key = source ? `/provider/intakes/${id}?source=${source}` : null;
+  return useSWR<IntakeDetail>(key);
 }

@@ -7,7 +7,7 @@ import { api, ApiError } from '@/lib/api-client';
 import { useAuthStore } from '@/lib/stores/auth-store';
 import type { Provider, ProviderAuthResponse } from '@/lib/types/provider';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'sonner';
 
 const OTP_LENGTH = 6;
@@ -104,10 +104,13 @@ export function VerifyForm() {
     if (code.length === OTP_LENGTH) void handleVerify(code);
   };
 
-  if (!email) {
-    router.replace('/login');
-    return null;
-  }
+  // Redirect to /login if email param is missing — must run as effect
+  // (calling router.replace during render is a Next.js anti-pattern).
+  useEffect(() => {
+    if (!email) router.replace('/login');
+  }, [email, router]);
+
+  if (!email) return null;
 
   return (
     <div className="w-full max-w-sm space-y-6">

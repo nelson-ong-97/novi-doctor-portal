@@ -18,7 +18,10 @@ export function usePatients() {
 
 /**
  * Fetches a single patient's detail by id.
+ * SWR key includes source so cache invalidates on brand switch.
  */
 export function usePatient(id: number | string) {
-  return useSWR<PatientDetail>(`/provider/patients/${id}`);
+  const { source } = useSource();
+  const key = source ? `/provider/patients/${id}?source=${source}` : null;
+  return useSWR<PatientDetail>(key);
 }

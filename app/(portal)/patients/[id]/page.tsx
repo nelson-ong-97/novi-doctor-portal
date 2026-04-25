@@ -66,11 +66,17 @@ export default function PatientDetailPage() {
   );
 }
 
-/** Inline sub-component: shows patient's intake history */
+/**
+ * Inline sub-component: shows patient's intake history.
+ *
+ * TODO(backend): replace with `GET /provider/patients/:id/intakes` server-side
+ * filter. Current implementation fetches the full pending-intakes list and
+ * filters client-side — works for staging-scale data but breaks pagination
+ * and exposes more PHI than necessary to the client. Patch when backend
+ * ships the per-patient endpoint (Phase 6 backend work).
+ */
 function PatientIntakeHistory({ patientId }: { patientId: number }) {
   const { data, error, isLoading } = useIntakes();
-
-  // Filter client-side by patient id until backend supports filter param
   const patientIntakes = data?.filter((i) => i.patient_id === patientId) ?? [];
 
   if (isLoading) {

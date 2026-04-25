@@ -18,7 +18,10 @@ export function usePendingOrders() {
 
 /**
  * Fetches a single order detail by id.
+ * SWR key includes source so cache invalidates on brand switch.
  */
 export function useOrder(id: number | string) {
-  return useSWR<OrderDetail>(`/provider/orders/${id}`);
+  const { source } = useSource();
+  const key = source ? `/provider/orders/${id}?source=${source}` : null;
+  return useSWR<OrderDetail>(key);
 }
