@@ -138,7 +138,7 @@ export default function PendingOrdersPage() {
                     </Button>
                     <Button
                       size="sm"
-                      variant="destructive"
+                      variant="red"
                       className="h-7 px-2 text-xs"
                       disabled={actioningId === order.id}
                       onClick={() => {
@@ -169,7 +169,7 @@ export default function PendingOrdersPage() {
           />
           <div className="flex gap-2">
             <Button
-              variant="destructive"
+              variant="red"
               size="sm"
               onClick={handleDeclineConfirm}
               disabled={actioningId !== null}

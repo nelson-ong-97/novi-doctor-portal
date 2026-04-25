@@ -122,7 +122,7 @@ export default function OrderDetailPage() {
           {isApproving ? 'Approving...' : 'Approve'}
         </Button>
         <Button
-          variant="destructive"
+          variant="red"
           onClick={() => setShowDeclineForm(true)}
           disabled={isApproving || isDeclining}
         >
@@ -142,7 +142,7 @@ export default function OrderDetailPage() {
           />
           <div className="flex gap-2">
             <Button
-              variant="destructive"
+              variant="red"
               size="sm"
               onClick={handleDecline}
               disabled={isDeclining}
